@@ -1,0 +1,45 @@
+<% if @product.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+    <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @product, html: { multipart: true } do |f| %>
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th><%= f.label :name %></th>  <td>
+          <%= f.text_field :name, class: 'form-control', placeholder: 'Product Name', required: true %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :description %></th>
+        <td>
+          <%= f.text_area :description, class: 'form-control', rows: 3, placeholder: 'Product Description' %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :price %></th>  <td>
+          <%= f.number_field :price, class: 'form-control', placeholder: 'Product Price', required: true %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :vendor %></th>
+        <td>
+          <%= f.select :vendor_id, Vendor.all.map { |v| [v.name, v.id] }, class: 'form-control' %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :product_type %></th>  <td>
+          <%= f.select :product_type_id, ProductType.all.map { |pt| [pt.name, pt.id] }, class: 'form-control', required: true %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <%= f.submit 'Create Product', class: 'btn btn-primary' %>
+<% end %>

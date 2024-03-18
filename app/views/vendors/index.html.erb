@@ -1,0 +1,24 @@
+<h1>Vendors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @vendors.each do |vendor| %>
+      <tr>
+        <td><%= vendor.name %></td>
+        <td>
+          <%= link_to 'Show', vendor_path(vendor), class: 'btn btn-primary' %>
+          <%= link_to 'Edit', edit_vendor_path(vendor), class: 'btn btn-warning' %>
+          <%= link_to 'Destroy', vendor_path(vendor), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Vendor', new_vendor_path, class: 'btn btn-success' %>

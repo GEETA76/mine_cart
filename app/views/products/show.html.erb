@@ -1,0 +1,12 @@
+<% if @product %>
+  <h1><%= @product.name %></h1>
+  <p>Price: <%= @product.price %></p>
+  <p>Vendor: <%= @product.vendor.name %></p>
+  <p>Product Type: <%= @product.product_type.name %></p>
+  <% if @product.description %>
+    <p>Description:</p>
+    <p><%= @product.description %></p>
+  <% end %>
+<% else %>
+  <h2>Product Not Found</h2>
+<% end %>

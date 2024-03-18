@@ -1,0 +1,37 @@
+<h1>Product Buyers Report</h1>
+
+<h3>By Vendor</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Vendor</th>
+      <th>Total Quantity Purchased</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @vendor_buyers.each do |vendor_buyer| %>
+      <tr>
+        <td><%= vendor_buyer[:vendor] %></td>
+        <td><%= vendor_buyer[:total_quantity] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>By Product Type</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Product Type</th>
+      <th>Total Quantity Purchased</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @product_type_buyers.each do |product_type_buyer| %>
+      <tr>
+        <td><%= product_type_buyer[:product_type] %></td>
+        <td><%= product_type_buyer[:total_quantity] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
